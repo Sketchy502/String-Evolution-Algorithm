@@ -1,4 +1,4 @@
-#include "Functions.h"
+#include "../header/Functions.h"
 
 int random(int lower, int upper){
 	if(lower < 0) upper++;

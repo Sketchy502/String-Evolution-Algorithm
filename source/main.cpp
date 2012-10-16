@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <fstream>
 
-#include "Mouse.h"
-#include "Functions.h"
+#include "../header/Mouse.h"
+#include "../header/Functions.h"
 
 using namespace std;
 

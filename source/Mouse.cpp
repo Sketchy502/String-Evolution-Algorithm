@@ -1,5 +1,5 @@
-#include "Mouse.h"
-#include "Functions.h"
+#include "../header/Mouse.h"
+#include "../header/Functions.h"
 
 Mouse::Mouse(std::string target, int gen){
 	name = target;
