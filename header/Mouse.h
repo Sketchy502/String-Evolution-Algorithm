@@ -3,6 +3,8 @@
 
 #include <string>
 
+#define CHAR_COST 1
+#define LENGTH_COST 100
 class Mouse{
 	private:
 		std::string name;
@@ -10,6 +12,7 @@ class Mouse{
 		int generation;
 	public:
 		Mouse(std::string, int);
+		Mouse(std::string , std::string , int);
 		void calc_fitness(std::string);
 		void mutate(int, int);
 		void setName(std::string);
