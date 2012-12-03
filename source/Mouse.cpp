@@ -1,6 +1,8 @@
 #include "../header/Mouse.h"
 #include "../header/Functions.h"
 
+
+//constructor for mouse with random name
 Mouse::Mouse(std::string target, int gen){
 
 	int length = random(1, 2*target.length());
@@ -11,6 +13,7 @@ Mouse::Mouse(std::string target, int gen){
 	generation = gen;
 }
 
+//constructor for mouse with pre-determined name
 Mouse::Mouse(std::string new_name, std::string target, int gen){
 
 	name = new_name;
@@ -19,6 +22,7 @@ Mouse::Mouse(std::string new_name, std::string target, int gen){
 	generation = gen;
 }
 
+//calculate the fitness based on interger distaces of chars, costs defined in Mouse.h
 void Mouse::calc_fitness(std::string target){
 	fit_val = 0;
 	int test_length;
@@ -32,6 +36,7 @@ void Mouse::calc_fitness(std::string target){
 	fit_val += ((name.length() - target.length())*(name.length() - target.length())) * LENGTH_COST;
 }
 
+//randomly mutate a given number of characters in the name by a given size
 void Mouse::mutate(int number, int size){
 	if (number > name.length()) number = name.length();
 	for (int i = 0; i < number; i++){
@@ -40,6 +45,8 @@ void Mouse::mutate(int number, int size){
 	}
 }
 
+
+// get/set values
 void Mouse::setName(std::string new_name){
 	name = new_name;
 }

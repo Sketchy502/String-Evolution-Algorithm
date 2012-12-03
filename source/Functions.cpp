@@ -1,5 +1,6 @@
 #include "../header/Functions.h"
 
+//Generate random number within range
 int random(int lower, int upper){
 	if(lower < 0) upper++;
 
@@ -7,9 +8,12 @@ int random(int lower, int upper){
 	return (rand() % range)+lower;
 }
 
+
+//compare fitness, used with sorting populations
 bool CompareFitness(Mouse A, Mouse B){
 	return (A.getFitness() < B.getFitness());
 }
+
 
 std::vector<Mouse> breed(std::vector<Mouse> parents, std::string target, int pop_size){
 	std::vector<Mouse> children;
@@ -27,8 +31,10 @@ std::vector<Mouse> breed(std::vector<Mouse> parents, std::string target, int pop
 
 		int child_length = (parent_one.getName().length() + parent_two.getName().length())/2;
 
+		//mutate child name length
 		if (rand()%5 == 0) child_length += random(-1,1);
 
+		//Find the longest parent name
 		if(parent_one.getName().length() < parent_two.getName().length()){
 			test_length = parent_one.getName().length();
 			longest = parent_two;
@@ -39,6 +45,7 @@ std::vector<Mouse> breed(std::vector<Mouse> parents, std::string target, int pop
 
 		std::string parent_name;
 
+		//create child name from random parts of parents names, fill with random characters if longer than parents
 		for (int i = 0; i < child_length; i++)
 		{
 			if(i < test_length){
@@ -54,13 +61,17 @@ std::vector<Mouse> breed(std::vector<Mouse> parents, std::string target, int pop
 			}
 		}
 
+		//create new child
 		Mouse child(new_name, target, parents[0].getGeneration() + 1);
 
 		child.setName(new_name);
+
+		//mutate child name 1 char by 1 place
 	    child.mutate(1,1);
 
 		child.calc_fitness(target);
 
+		//push child into popualtion
 		children.push_back(child);
 	}
 
